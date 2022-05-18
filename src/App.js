@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import {BrowserRouter, Routes, Route, Link} from "react-router-dom"
+import TestComponent from "./views/TestComponent";
+import Dashboard from "./views/Dashboard";
+import Create from "./views/Create";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+      <h1>Song FS Demo</h1>
+      <Link to="/test/api">Test backend </Link> |
+      <Link to="/songs">Songs Dashbaord </Link> |
+      <Link to="/songs/new">Create new song </Link> |
+
+
+      <Routes>
+        <Route path="/test/api" element={ <TestComponent /> } />
+        <Route path="/songs" element={ <Dashboard /> } />
+        <Route path="/songs/new" element={ <Create /> } />
+
+      </Routes>
+
+      </BrowserRouter>
     </div>
   );
 }
